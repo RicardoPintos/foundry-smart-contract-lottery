@@ -199,7 +199,7 @@ This deployment will do this:
 
 <br>
 
-Because this is running with a mock Vrf contract, it will not have the Chainlink Automation functionality that is available in the rest of the Raffle.sol code.
+This raffle is running with a mock Vrf contract, therefore it will not have the Chainlink Automation functionality that is available in the rest of the Raffle.sol code.
 
 ## Deployment to Sepolia testnet
 
