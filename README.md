@@ -4,6 +4,32 @@ With this Foundry project you can create raffles, deploy them to a blockchain ne
 
 <br>
 
+- [Foundry Smart Contract Lottery](#foundry-smart-contract-lottery)
+- [Getting Started](#getting-started)
+  * [Requirements](#requirements)
+  * [Quickstart](#quickstart)
+- [Usage](#usage)
+  * [Libraries](#libraries)
+  * [Testing](#testing)
+    + [Integration tests](#integration-tests)
+    + [Test Coverage](#test-coverage)
+  * [Estimate gas](#estimate-gas)
+  * [Formatting](#formatting)
+- [Deploy](#deploy)
+  * [Private Key Encryption](#private-key-encryption)
+  * [Deployment to local Anvil](#deployment-to-local-anvil)
+    + [Preparation](#preparation)
+    + [Deployment](#deployment)
+    + [Result](#result)
+  * [Deployment to Sepolia testnet](#deployment-to-sepolia-testnet)
+    + [Preparation](#preparation-1)
+    + [Deployment](#deployment-1)
+    + [Result](#result-1)
+- [Acknowledgments](#acknowledgments)
+- [Thank you!](#thank-you-)
+
+<br>
+
 # Getting Started
 
 ## Requirements
