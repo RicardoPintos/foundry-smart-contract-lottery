@@ -143,6 +143,8 @@ Now, you can use the `--account` flag instead of `--private-key`. You'll need to
 cast wallet list
 ```
 
+<br>
+
 ## Deployment to local Anvil
 
 ### Preparation
@@ -200,6 +202,8 @@ This deployment will do this:
 <br>
 
 This raffle is running with a mock Vrf contract, therefore it will not have the Chainlink Automation functionality that is available in the rest of the Raffle.sol code.
+
+<br>
 
 ## Deployment to Sepolia testnet
 
@@ -262,7 +266,7 @@ After deployment you can interact with the raffle like this:
 
 # Acknowledgments
 
-Thanks to the Cyfrin Updraft team and to Patrick Collins for their amazing work. Please checkout their courses on [Cyfrin Updraft](https://updraft.cyfrin.io/courses).
+Thanks to the Cyfrin Updraft team and to Patrick Collins for their amazing work. Please check out their courses on [Cyfrin Updraft](https://updraft.cyfrin.io/courses).
 <br>
 Thanks to [EngrPips](https://github.com/EngrPips) for the help with the Foundry on-chain Simulation issues.
 <br>
