@@ -26,7 +26,11 @@ With this Foundry project you can create raffles, deploy them to a blockchain ne
     + [Deployment](#deployment-1)
     + [Result](#result-1)
 - [Acknowledgments](#acknowledgments)
-- [Thank you!](#thank-you-)
+- [Thank you](#thank-you)
+
+<br>
+
+![EthereumBanner](https://github.com/user-attachments/assets/8a1c6e53-2e66-4256-9312-252a0360b7df)
 
 <br>
 
@@ -85,7 +89,6 @@ forge test --fork-url $SEPOLIA_RPC_URL
 
 The tests in "test/integration/Integrations.t.sol" on this repo were made as an optional assignment for the Foundry Fundamentals Course of Cyfrin Updraft. I made them in order to practice integration tests in Solidity. Therefore they are not for production and their validity is not guaranteed.
 
-
 ### Test Coverage
 
 To check the test coverage of this project, run:
@@ -123,13 +126,19 @@ It is recommended to work with encrypted private keys for both Anvil and Sepolia
 In your local terminal, run this:
 
 ```
-cast wallet import anvilKey --interactive
+cast wallet import <Choose_Your_Anvil_Account_Name> --interactive
 ```
+
 Paste your private key, hit enter and then create a password for that key. 
+
 <br>
+
 For this project, it is recommended to use the **first** Anvil private key. If you use a different Anvil key, you'll need to modify the account address of the localNetworkConfig in the HelperConfig.s.sol contract to the address of the private key that you will be using.
 
+<br>
+
 Now, you can use the `--account` flag instead of `--private-key`. You'll need to type your password when is needed. To check all of your encrypted keys, run this:
+
 ```
 cast wallet list
 ```
@@ -151,6 +160,7 @@ subId = uint256(
       keccak256(abi.encodePacked(msg.sender, blockhash(block.number - 1), address(this), currentSubNonce))
     );
 ```
+
 You have to remove the "- 1", because that is the source of the underflow. You'll end up with this:
 
 ```
@@ -162,20 +172,22 @@ subId = uint256(
 ### Deployment
 
 First you need to run Anvil on your terminal:
+
 ```
 anvil
 ```
 
 Then you open another terminal and run this:
+
 ```
-forge script script/DeployRaffle.s.sol:DeployRaffle --rpc-url http://127.0.0.1:8545 --account [Your_Encrypted_Anvil_Private_Key_Account_Name] --broadcast -vvvv
+forge script script/DeployRaffle.s.sol:DeployRaffle --rpc-url http://127.0.0.1:8545 --account <Your_Encrypted_Anvil_Private_Key_Account_Name> --broadcast -vvvv
 ```
+
 We are not using the default Foundry sender, because it returns this error:
+
 ```
 Error: You seem to be using Foundry's default sender. Be sure to set your own --sender.
 ```
-
-
 
 ### Result
 
@@ -186,23 +198,28 @@ This deployment will do this:
 4. Add your raffle as a consumer to that subscription Id.
 
 <br>
-Because this is running with a mock Vrf contract, it will not have the Chainlink Automation functionality that is available in the rest of the Raffle.sol code.
 
+Because this is running with a mock Vrf contract, it will not have the Chainlink Automation functionality that is available in the rest of the Raffle.sol code.
 
 ## Deployment to Sepolia testnet
 
 ### Preparation
 
-There is currently an issue with the subscription Id creation when you tried to deploy to Sepolia. If you try to use the DeployRaffle script, Foundry will revert with and **InvalidSubscription** error in both the `transferAndCall()` and the `addConsumer()` functions. 
+There is currently an issue with the subscription Id creation when you tried to deploy to Sepolia. If you try to use the DeployRaffle script, Foundry will revert with and **InvalidSubscription** error in both the `transferAndCall()` and the `addConsumer()` functions.
+
 <br>
+
 This is an issue with the Foundry on-chain simulation. It ends up creating a different subscription Id from the one that the `fundSubscription()` and `addConsumer()` functions are using. So you need to skip the build-in `createSubscription()` functionality by having a subscription Id before deployment.
+
 <br>
+
 Here are the steps needed:
 1. Create a subscription on the Chainlink VRF website,
 2. Copy your new subscription Id,
 3. Open the HelperConfig.s.sol contract of this project,
 4. Find the getSepoliaEthConfig() function,
 5. Paste your new subscription Id on the NetworkConfig.
+
 <br>
 
 **Don't forget** to fund your new subscription with LINK so it can perform correctly on deployment.
@@ -212,18 +229,19 @@ Here are the steps needed:
 When you complete the preparation, run this:
 
 ```
-forge script script/DeployRaffle.s.sol:DeployRaffle --rpc-url [Your_Alchemy_Sepolia_Node_Url] --account [Your_Encrypted_Sepolia_Private_Key_Account_Name] --broadcast -vvvv
+forge script script/DeployRaffle.s.sol:DeployRaffle --rpc-url <Your_Alchemy_Sepolia_Node_Url> --account <Your_Encrypted_Sepolia_Private_Key_Account_Name> --broadcast -vvvv
 ```
 
 If you have an Etherscan API key, you can verify your contract alongside the deployment by running this instead:
 
 ```
-forge script script/DeployRaffle.s.sol:DeployRaffle --rpc-url [Your_Alchemy_Sepolia_Node_Url] --account [Your_Encrypted_Sepolia_Private_Key_Account_Name] --broadcast --verify --etherscan-api-key [Your_Etherscan_Api_Key] -vvvv
+forge script script/DeployRaffle.s.sol:DeployRaffle --rpc-url <Your_Alchemy_Sepolia_Node_Url> --account <Your_Encrypted_Sepolia_Private_Key_Account_Name> --broadcast --verify --etherscan-api-key <Your_Etherscan_Api_Key> -vvvv
 ```
 
 If your contract wasn't properly verified on deployment, you can manually do it on the Ethescan UI by running this:
+
 ```
-forge verify-contract [Your_Raffle_Address] src/Raffle.sol:Raffle --etherscan-api-key [Your_Etherscan_Api_key] --rpc-url [Your_Alchemy_Sepolia_Node_Url] --show-standard-json-input > json.json
+forge verify-contract <Your_Raffle_Address> src/Raffle.sol:Raffle --etherscan-api-key <Your_Etherscan_Api_key> --rpc-url <Your_Alchemy_Sepolia_Node_Url> --show-standard-json-input > json.json
 ```
 
 ### Result
@@ -252,10 +270,9 @@ Thanks to [Petar Ivanov](https://github.com/PetarIvanov01) for sharing the arith
 
 <br>
 
-# Thank you!
+# Thank you
 
 If you appreciated this, feel free to follow me!
-
 
 [![Ricardo Pintos Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://x.com/pintosric)
 [![Ricardo Pintos YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@PintosRic)
