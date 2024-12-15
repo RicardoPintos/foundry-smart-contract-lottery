@@ -59,10 +59,10 @@ forge build
 
 This project uses the following libraries:
 
-- [Chainlink-brownie-contracts (version 1.1.1)](https://https://github.com/smartcontractkit/chainlink-brownie-contracts)
-- [Cyfrin-foundry-devops (version 0.2.2)](https://https://github.com/Cyfrin/foundry-devops)
-- [Foundry-forge-std (version 1.8.2)](https://https://github.com/foundry-rs/forge-std)
-- [Transmissions11-Solmate (version 6)](https://https://github.com/transmissions11/solmate)
+- [Chainlink-brownie-contracts (version 1.1.1)](https://github.com/smartcontractkit/chainlink-brownie-contracts)
+- [Cyfrin-foundry-devops (version 0.2.2)](https://github.com/Cyfrin/foundry-devops)
+- [Foundry-forge-std (version 1.8.2)](https://github.com/foundry-rs/forge-std)
+- [Transmissions11-Solmate (version 6)](https://github.com/transmissions11/solmate)
 
 You can install all of them with the following Makefile command:
 
